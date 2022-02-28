@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = {
@@ -7,8 +8,14 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"],
+        exclude: /nodeModules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -16,12 +23,13 @@ module.exports = {
     extensions: ["*", ".js", ".jsx"],
   },
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
     hot: true,
+    port: 3000,
+    historyApiFallback: true,
   },
 };
