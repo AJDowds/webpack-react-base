@@ -1,17 +1,20 @@
-import * as React from "react";
-import { Testo } from "webpack-react-base-auth";
+import * as React from "react"
+import styled from "styled-components"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Home } from "./features/Home"
 
-interface AppInterface {
-  title: string;
+const View = styled.div``
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <View>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </View>
+    </BrowserRouter>
+  )
 }
 
-const App: React.FC<AppInterface> = ({ title }) => {
-  return (
-    <div>
-      <h1>Hello + {title}</h1>
-      <Testo title="Test" />
-    </div>
-  );
-};
-
-export default App;
+export default App

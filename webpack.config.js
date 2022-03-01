@@ -1,6 +1,6 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path")
 
 module.exports = {
   entry: path.resolve(__dirname, "./src/index.tsx"),
@@ -28,7 +28,7 @@ module.exports = {
     extensions: ["*", ".js", ".ts", ".tsx", ".jsx"],
   },
   output: {
-    filename: "main.js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
@@ -37,4 +37,4 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
   },
-};
+}

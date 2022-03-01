@@ -1,10 +1,17 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
+import App from "./App"
+import storeConfig from "./store/storeConfig"
 
-const title = 'Webpack React Base';
- 
+const { reduxStore, reduxPersistor } = storeConfig()
+
 ReactDOM.render(
-    <App title={title} />,
-    document.getElementById('app')
-);
+  <Provider store={reduxStore}>
+    <PersistGate loading={null} persistor={reduxPersistor}>
+      <App />
+    </PersistGate>
+  </Provider>,
+  document.getElementById("app")
+)
