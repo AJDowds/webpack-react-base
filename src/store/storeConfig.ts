@@ -37,6 +37,8 @@ const rootReducer = (state, action) => {
   return combineReducer(state, action)
 }
 
+export type RootState = ReturnType<typeof rootReducer>
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 const loggerMiddleware = createLogger()
 
