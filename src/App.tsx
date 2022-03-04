@@ -3,8 +3,10 @@ import styled from "styled-components"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from "./features/Home"
 
-const View = styled.div``
-
+const View = styled.div`
+  height: 100%;
+  width: 100%;
+`
 const App = () => {
   return (
     <BrowserRouter>
